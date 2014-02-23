@@ -1,0 +1,27 @@
+{
+  "name": "quotient",
+  "version": "0.0.0",
+  "description": "Rational numbers for Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jaz303/quotient.git"
+  },
+  "keywords": [
+    "rational",
+    "numbers",
+    "math",
+    "quotient",
+    "numerator",
+    "denominator"
+  ],
+  "author": "Jason Frame <jason@onehackoranother.com> (http://jasonframe.co.uk)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaz303/quotient/issues"
+  },
+  "homepage": "https://github.com/jaz303/quotient"
+}
