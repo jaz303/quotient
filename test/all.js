@@ -140,3 +140,33 @@ test('toFloat', function(assert) {
     assert.end();
 
 });
+
+test('object methods', function(assert) {
+
+    function t(op, a, b, c, d) {
+
+        var v1 = q(a, b),
+            v2 = q(c, d);
+
+        q[op](v1, v2, v1);
+
+        var r1 = v1;
+
+        var v3 = q(a, b),
+            v4 = q(c, d);
+
+        var r2 = v3[op](v4);
+
+        assert.ok(r1.num === r2.num);
+        assert.ok(r1.den === r2.den);
+
+    }
+
+    t('add',    1, 2, 6, 7);
+    t('sub',    10, 12, 1, 4);
+    t('mul',    5, 7, 6, 1);
+    t('div',    2, 3, 1, 78);
+
+    assert.end();
+
+});
