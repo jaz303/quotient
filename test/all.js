@@ -1,6 +1,28 @@
 var test    = require('tape'),
     q       = require('../');
 
+test('ctor', function(assert) {
+
+    var v = q();
+    assert.ok(v.num === 0);
+    assert.ok(v.den === 1);
+
+    v = q(5);
+    assert.ok(v.num === 5);
+    assert.ok(v.den === 1);
+
+    v = q(2, 3);
+    assert.ok(v.num === 2);
+    assert.ok(v.den === 3);
+
+    v = q(9, 3, 4);
+    assert.ok(v.num === 39);
+    assert.ok(v.den === 4);
+
+    assert.end();
+
+});
+
 test('eq', function(assert) {
 
     var v1 = q(6, 8),
