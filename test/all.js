@@ -57,7 +57,7 @@ test('mul', function(assert) {
 
 });
 
-test('div', function(assert) {
+test('div-1', function(assert) {
 
     var v1 = q(10, 15),
         v2 = q(3, 4);
@@ -65,6 +65,18 @@ test('div', function(assert) {
     q.div(v1, v2, v1);
     assert.ok(v1.num === 40);
     assert.ok(v1.den === 45);
+    assert.end();
+
+});
+
+test('div-2', function(assert) {
+
+    var v1 = q(10, 15),
+        v2 = q(3, 4);
+
+    q.div(v1, v2, v2);
+    assert.ok(v2.num === 40);
+    assert.ok(v2.den === 45);
     assert.end();
 
 });
