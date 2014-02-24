@@ -1,6 +1,11 @@
 module.exports      = quotient;
 
+quotient.cmp        = cmp;
 quotient.eq         = eq;
+quotient.lt         = lt;
+quotient.le         = le;
+quotient.gt         = gt;
+quotient.ge         = ge;
 quotient.add        = add;
 quotient.sub        = sub;
 quotient.mul        = mul;
@@ -28,6 +33,12 @@ function gcd(a, b) {
     }
 }
 
+function cast(v) {
+    return (typeof v === 'number')
+            ? new Fraction(v, 1)
+            : v;
+}
+
 //
 // object interface
 
@@ -36,10 +47,15 @@ function Fraction(numerator, denominator) {
     this.den = denominator; 
 }
 
+Function.prototype.cmp = function(r) { return cmp(this, cast(r)); }
+Function.prototype.eq  = function(r) { return eq(this,  cast(r)); }
+Function.prototype.lt  = function(r) { return lt(this,  cast(r)); }
+Function.prototype.le  = function(r) { return le(this,  cast(r)); }
+Function.prototype.gt  = function(r) { return gt(this,  cast(r)); }
+Function.prototype.ge  = function(r) { return ge(this,  cast(r)); }
+
 Fraction.prototype.add = function(r) {
-    if (typeof r === 'number') {
-        r = new Fraction(r, 1);
-    }
+    r = cast(r);
     var out = new Fraction(0, 1);
     add(this, r, out);
     simplify(out);
@@ -47,9 +63,7 @@ Fraction.prototype.add = function(r) {
 }
 
 Fraction.prototype.sub = function(r) {
-    if (typeof r === 'number') {
-        r = new Fraction(r, 1);
-    }
+    r = cast(r);
     var out = new Fraction(0, 1);
     sub(this, r, out);
     simplify(out);
@@ -57,9 +71,7 @@ Fraction.prototype.sub = function(r) {
 }
 
 Fraction.prototype.mul = function(r) {
-    if (typeof r === 'number') {
-        r = new Fraction(r, 1);
-    }
+    r = cast(r);
     var out = new Fraction(0, 1);
     mul(this, r, out);
     simplify(out);
@@ -67,9 +79,7 @@ Fraction.prototype.mul = function(r) {
 }
 
 Fraction.prototype.div = function(r) {
-    if (typeof r === 'number') {
-        r = new Fraction(r, 1);
-    }
+    r = cast(r);
     var out = new Fraction(0, 1);
     div(this, r, out);
     simplify(out);
@@ -91,8 +101,28 @@ Fraction.prototype.valueOf = function() {
 //
 // functions
 
+function cmp(l, r) {
+    return (l.num * r.den) - (r.num * l.den);
+}
+
 function eq(l, r) {
-    return (l.num * r.den) == (l.den * r.num);
+    return cmp(l, r) === 0;
+}
+
+function lt(l, r) {
+    return cmp(l, r) < 0;
+}
+
+function le(l, r) {
+    return cmp(l, r) <= 0;
+}
+
+function gt(l, r) {
+    return cmp(l, r) > 0;
+}
+
+function ge(l, r) {
+    return cmp(l, r) >= 0;
 }
 
 function add(l, r, out) {

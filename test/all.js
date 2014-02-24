@@ -33,6 +33,50 @@ test('eq', function(assert) {
 
 });
 
+test('lt', function(assert) {
+
+    var v1 = q(1, 4),
+        v2 = q(3, 4);
+
+    assert.ok(q.lt(v1, v2));
+    assert.notOk(q.ge(v1, v2));
+    assert.end();
+
+});
+
+test('le', function(assert) {
+
+    var v1 = q(1, 4),
+        v2 = q(1, 4);
+
+    assert.ok(q.le(v1, v2));
+    assert.notOk(q.gt(v1, v2));
+    assert.end();
+
+});
+
+test('gt', function(assert) {
+
+    var v1 = q(3, 4),
+        v2 = q(1, 4);
+
+    assert.ok(q.gt(v1, v2));
+    assert.notOk(q.le(v1, v2));
+    assert.end();
+
+});
+
+test('ge', function(assert) {
+
+    var v1 = q(1, 4),
+        v2 = q(1, 4);
+
+    assert.ok(q.ge(v1, v2));
+    assert.notOk(q.lt(v1, v2));
+    assert.end();
+
+});
+
 test('neq', function(assert) {
 
     var v1 = q(6, 8),
