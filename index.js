@@ -1,5 +1,6 @@
 module.exports      = quotient;
 
+quotient.eq         = eq;
 quotient.add        = add;
 quotient.sub        = sub;
 quotient.mul        = mul;
@@ -35,14 +36,6 @@ function Fraction(numerator, denominator) {
     this.den = denominator; 
 }
 
-Fraction.prototype.toString = function() {
-    return toString(this);
-}
-
-Fraction.prototype.valueOf = function() {
-    return toFloat(this);
-}
-
 Fraction.prototype.add = function(r) {
     var out = new Fraction(0, 1);
     add(this, r, out);
@@ -67,8 +60,20 @@ Fraction.prototype.div = function(r) {
     return out;
 }
 
+Fraction.prototype.clone = function() {
+    return new Fraction(this.num, this.den);
+}
+
 Fraction.prototype.simplify = function() {
     simplify(this);
+}
+
+Fraction.prototype.toString = function() {
+    return toString(this);
+}
+
+Fraction.prototype.valueOf = function() {
+    return toFloat(this);
 }
 
 //

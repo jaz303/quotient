@@ -4,7 +4,7 @@
   "description": "Rational numbers for Javascript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "set -e; for t in test/*.js; do node $t; done"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/jaz303/quotient/issues"
   },
-  "homepage": "https://github.com/jaz303/quotient"
+  "homepage": "https://github.com/jaz303/quotient",
+  "devDependencies": {
+    "tape": "~2.5.0"
+  }
 }
