@@ -1,6 +1,6 @@
 {
   "name": "quotient",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Rational numbers for Javascript",
   "main": "index.js",
   "scripts": {
