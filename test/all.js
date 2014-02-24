@@ -149,6 +149,7 @@ test('object methods', function(assert) {
             v2 = q(c, d);
 
         q[op](v1, v2, v1);
+        q.simplify(v1);
 
         var r1 = v1;
 

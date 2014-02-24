@@ -37,35 +37,47 @@ function Fraction(numerator, denominator) {
 }
 
 Fraction.prototype.add = function(r) {
+    if (typeof r === 'number') {
+        r = new Fraction(r, 1);
+    }
     var out = new Fraction(0, 1);
     add(this, r, out);
+    simplify(out);
     return out;
 }
 
 Fraction.prototype.sub = function(r) {
+    if (typeof r === 'number') {
+        r = new Fraction(r, 1);
+    }
     var out = new Fraction(0, 1);
     sub(this, r, out);
+    simplify(out);
     return out;
 }
 
 Fraction.prototype.mul = function(r) {
+    if (typeof r === 'number') {
+        r = new Fraction(r, 1);
+    }
     var out = new Fraction(0, 1);
     mul(this, r, out);
+    simplify(out);
     return out;
 }
 
 Fraction.prototype.div = function(r) {
+    if (typeof r === 'number') {
+        r = new Fraction(r, 1);
+    }
     var out = new Fraction(0, 1);
     div(this, r, out);
+    simplify(out);
     return out;
 }
 
 Fraction.prototype.clone = function() {
     return new Fraction(this.num, this.den);
-}
-
-Fraction.prototype.simplify = function() {
-    simplify(this);
 }
 
 Fraction.prototype.toString = function() {
