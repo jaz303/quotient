@@ -1,0 +1,4 @@
+name: quotient
+markdown: redcarpet
+pygments: true
+baseurl: "http://jasonframe.co.uk/projects/-/quotient"
